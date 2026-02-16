@@ -40,21 +40,21 @@ class Record:
     def add_phone(self, phone: str) -> None:
         phone_idx = self._find_phone_index(phone)
         if phone_idx is not None:
-            ValueError(f"Phone number '{phone}' already exists")
+            raise ValueError(f"Phone number '{phone}' already exists")
 
         self.phones.append(Phone(phone))
 
     def remove_phone(self, phone: str) -> None:
         phone_idx = self._find_phone_index(phone)
         if phone_idx is None:
-            ValueError(f"Phone number '{phone}' does not exist")
+            raise ValueError(f"Phone number '{phone}' does not exist")
 
         del self.phones[phone_idx]
 
     def edit_phone(self, old_phone: str, new_phone: str) -> None:
         phone_idx = self._find_phone_index(old_phone)
         if phone_idx is None:
-            ValueError(f"Phone number '{old_phone}' does not exist")
+            raise ValueError(f"Phone number '{old_phone}' does not exist")
 
         self.phones[phone_idx] = Phone(new_phone)
 
